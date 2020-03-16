@@ -1,15 +1,15 @@
 <template>
-  <el-row :gutter="40" class="panel-group">
+  <el-row :gutter="10" class="panel-group">
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
         <div class="card-panel-icon-wrapper icon-people">
           <svg-icon icon-class="peoples" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
+          <count-to :start-val="0" :end-val="Count.people" :duration="2600" class="card-panel-num" />
           <div class="card-panel-text">
-            New Visits
+            商城用户
           </div>
-          <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -19,10 +19,10 @@
           <svg-icon icon-class="message" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
+          <count-to :start-val="0" :end-val="Count.message" :duration="3000" class="card-panel-num" />
           <div class="card-panel-text">
-            Messages
+            分销记录
           </div>
-          <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -32,10 +32,10 @@
           <svg-icon icon-class="money" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
+          <count-to :start-val="0" :end-val="Count.money" :duration="3200" class="card-panel-num" />
           <div class="card-panel-text">
-            Purchases
+            商城订单
           </div>
-          <count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -45,10 +45,10 @@
           <svg-icon icon-class="shopping" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
+          <count-to :start-val="0" :end-val="Count.shopping" :duration="3600" class="card-panel-num" />
           <div class="card-panel-text">
-            Shoppings
+            交易记录
           </div>
-          <count-to :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num" />
         </div>
       </div>
     </el-col>
@@ -62,6 +62,16 @@ export default {
   components: {
     CountTo
   },
+  data() {
+    return {
+      Count: {
+        people: 34522,
+        message: 140,
+        money: 345,
+        shopping: 34500
+      }
+    }
+  },
   methods: {
     handleSetLineChartData(type) {
       this.$emit('handleSetLineChartData', type)
@@ -72,43 +82,36 @@ export default {
 
 <style lang="scss" scoped>
 .panel-group {
-  margin-top: 18px;
-
   .card-panel-col {
-    margin-bottom: 32px;
+    margin-bottom: 17px;
   }
 
   .card-panel {
-    height: 108px;
+    display: flex;
+    height: 76px;
     cursor: pointer;
     font-size: 12px;
-    position: relative;
-    overflow: hidden;
     color: #666;
     background: #fff;
-    box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
-    border-color: rgba(0, 0, 0, .05);
+    border-radius: 7px;
+    // box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
+    border: 1px solid rgba(187, 187, 187, 1);
 
-    &:hover {
-      .card-panel-icon-wrapper {
-        color: #fff;
-      }
+    // 图标背景颜色
+    .icon-people {
+      background: #36CFCA;
+    }
 
-      .icon-people {
-        background: #40c9c6;
-      }
+    .icon-message {
+      background: #FD4D4F;
+    }
 
-      .icon-message {
-        background: #36a3f7;
-      }
+    .icon-money {
+      background: #FFC53D;
+    }
 
-      .icon-money {
-        background: #f4516c;
-      }
-
-      .icon-shopping {
-        background: #34bfa3
-      }
+    .icon-shopping {
+      background: #42A7FF;
     }
 
     .icon-people {
@@ -128,32 +131,39 @@ export default {
     }
 
     .card-panel-icon-wrapper {
-      float: left;
-      margin: 14px 0 0 14px;
-      padding: 16px;
+      width: 111px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       transition: all 0.38s ease-out;
-      border-radius: 6px;
+      border-radius: 6px 0 0 6px;
+      color: #fff;
+      font-size: 20px;
     }
 
     .card-panel-icon {
-      float: left;
-      font-size: 48px;
+      font-size: 32px;
     }
 
     .card-panel-description {
-      float: right;
+      flex: 1;
       font-weight: bold;
-      margin: 26px;
-      margin-left: 0px;
+      // margin: 26px;
+      // margin-left: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
 
       .card-panel-text {
         line-height: 18px;
         color: rgba(0, 0, 0, 0.45);
-        font-size: 16px;
-        margin-bottom: 12px;
+        font-size: 12px;
+        margin-top: 8px;
       }
 
       .card-panel-num {
+        color: #595959;
         font-size: 20px;
       }
     }
