@@ -1,9 +1,20 @@
 <template>
   <div class="dashboard-editor-container">
     <github-corner class="github-corner" />
+    <!-- 数量统计 -->
+    <panel-group
+      :member-count="memberCount"
+      :distribution-count="distributionCount"
+      :order-count="orderCount"
+      :transaction-count="transactionCount"
+      @handleSetLineChartData="handleSetLineChartData"
+    />
 
-    <panel-group @handleSetLineChartData="handleSetLineChartData" />
+    <!-- 信息统计 -->
     <statistics-chart />
+
+    <!-- 快捷跳转 -->
+    <common-box />
     <!-- <el-row style="background:#fff;padding:16px 16px 0;margin-bottom:32px;">
       <line-chart :chart-data="lineChartData" />
     </el-row>
@@ -44,6 +55,8 @@
 import GithubCorner from '@/components/GithubCorner'
 import PanelGroup from './components/PanelGroup'
 import StatisticsChart from './components/StatisticsChart'
+import CommonBox from './components/CommonBox'
+import { count } from '@/api/shopIndex'
 // import LineChart from './components/LineChart'
 // import RaddarChart from './components/RaddarChart'
 // import PieChart from './components/PieChart'
@@ -76,7 +89,8 @@ export default {
   components: {
     GithubCorner,
     PanelGroup,
-    StatisticsChart
+    StatisticsChart,
+    CommonBox
     // LineChart
     // RaddarChart,
     // PieChart,
@@ -87,12 +101,33 @@ export default {
   },
   data() {
     return {
-      lineChartData: lineChartData.newVisitis
+      lineChartData: lineChartData.newVisitis,
+      memberCount: 0,
+      distributionCount: 0,
+      orderCount: 0,
+      transactionCount: 0
     }
+  },
+  mounted() {
+    this.getHomeInfo()
   },
   methods: {
     handleSetLineChartData(type) {
       this.lineChartData = lineChartData[type]
+    },
+    getHomeInfo() {
+      count().then(this.getHomeInfoSucc)
+    },
+    getHomeInfoSucc(res) {
+      // console.log(res.data)
+      if (res.data) {
+        const data = res.data
+        // console.log(data)
+        this.memberCount = data.memberCount
+        this.distributionCount = data.distributionCount
+        this.orderCount = data.orderCount
+        this.transactionCount = data.transactionCount
+      }
     }
   }
 }

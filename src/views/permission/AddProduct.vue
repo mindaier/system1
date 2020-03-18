@@ -1,14 +1,15 @@
 <template>
-  <div class="container">
-    <div class="product-type-container">
+  <div class="add-product-wrapper">
+    <!-- <div class="product-type-container">
       <div class="product-type">产品类型列表</div>
       <div class="product-type-list-wrapper">
         <ul class="product-type-list">
-          <!-- <li class="product-list-item"></li> -->
-          <shop-category :list="list" />
+          <li class="product-list-item"></li>
+          <shop-category :data="data" />
         </ul>
       </div>
-    </div>
+    </div> -->
+    <shop-category />
     <div class="add-product-container">
       <div class="subject-container">
         <div class="subject">添加商品</div>
@@ -17,7 +18,7 @@
         <div class="add-product-form">
           <el-form ref="form" :model="form" label-width="80px">
             <el-form-item label="图片标题:">
-              <el-input v-model="form.imgTitle" placeholder="输入图片名称" />
+              <el-input v-model="form.imglabel" placeholder="输入图片名称" />
             </el-form-item>
             <el-form-item label="简略标题:">
               <el-input v-model="form.shortTitle" placeholder="输入标题" />
@@ -149,55 +150,51 @@
 </template>
 
 <script>
-import shopCategory from './components/shopCategory'
+import ShopCategory from './components/ShopCategory'
 
 export default {
   name: 'AddProduct',
   components: {
-    shopCategory
+    ShopCategory
   },
   data() {
     return {
-      list: [
-        {
-          title: '商城分类列表',
-          child: [
-            {
-              title: '蔬菜水果',
-              child: [
-                {
-                  title: '香蕉'
-                },
-                {
-                  title: '橘子'
-                }
-              ]
-            },
-            {
-              title: '手机数码',
-              child: [
-                {
-                  title: 'iphoneX'
-                },
-                {
-                  title: '相机'
-                }
-              ]
-            },
-            {
-              title: '电脑配件',
-              child: [
-                {
-                  title: '键盘'
-                },
-                {
-                  title: 'U盘'
-                }
-              ]
-            }
-          ]
-        }
-      ],
+      // data: [{
+      //     label: '一级 1',
+      //     children: [{
+      //       label: '二级 1-1',
+      //       children: [{
+      //         label: '三级 1-1-1'
+      //       }]
+      //     }]
+      //   }, {
+      //     label: '一级 2',
+      //     children: [{
+      //       label: '二级 2-1',
+      //       children: [{
+      //         label: '三级 2-1-1'
+      //       }]
+      //     }, {
+      //       label: '二级 2-2',
+      //       children: [{
+      //         label: '三级 2-2-1'
+      //       }]
+      //     }]
+      //   }, {
+      //     label: '一级 3',
+      //     children: [{
+      //       label: '二级 3-1',
+      //       children: [{
+      //         label: '三级 3-1-1'
+      //       }]
+      //     }, {
+      //       label: '二级 3-2',
+      //       children: [{
+      //         label: '三级 3-2-1'
+      //       }]
+      //     }]
+      //   }],
+
       form: {
         name: '',
         region: '',
@@ -262,6 +259,12 @@ export default {
 }
 </script>
 
+<style lang="scss">
+  .nav-container {
+    height: 602px;
+  }
+</style>
+
 <style lang="scss" scoped>
   .content-desc >>> .el-textarea__inner,
   .content-details >>> .el-input__inner{
@@ -294,10 +297,10 @@ export default {
     background: #9D9D9D;
   }
 
-  .container {
+  .add-product-wrapper {
     padding: 0 22px 0 28px;
     display: flex;
-    min-height: 643px;
+    // min-height: 643px;
 
     .product-type-container {
       border: 1px solid rgba(229, 229, 229, 1);

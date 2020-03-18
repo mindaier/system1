@@ -6,7 +6,7 @@
           <svg-icon icon-class="peoples" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <count-to :start-val="0" :end-val="Count.people" :duration="2600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="memberCount" :duration="2600" class="card-panel-num" />
           <div class="card-panel-text">
             商城用户
           </div>
@@ -19,7 +19,7 @@
           <svg-icon icon-class="message" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <count-to :start-val="0" :end-val="Count.message" :duration="3000" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="distributionCount" :duration="3000" class="card-panel-num" />
           <div class="card-panel-text">
             分销记录
           </div>
@@ -32,7 +32,7 @@
           <svg-icon icon-class="money" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <count-to :start-val="0" :end-val="Count.money" :duration="3200" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="orderCount" :duration="3200" class="card-panel-num" />
           <div class="card-panel-text">
             商城订单
           </div>
@@ -45,7 +45,7 @@
           <svg-icon icon-class="shopping" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
-          <count-to :start-val="0" :end-val="Count.shopping" :duration="3600" class="card-panel-num" />
+          <count-to :start-val="0" :end-val="transactionCount" :duration="3600" class="card-panel-num" />
           <div class="card-panel-text">
             交易记录
           </div>
@@ -62,14 +62,20 @@ export default {
   components: {
     CountTo
   },
+  props: {
+    memberCount: Number,
+    distributionCount: Number,
+    orderCount: Number,
+    transactionCount: Number
+  },
   data() {
     return {
-      Count: {
-        people: 34522,
-        message: 140,
-        money: 345,
-        shopping: 34500
-      }
+      // Count: {
+      //   people: 34522,
+      //   message: 140,
+      //   money: 345,
+      //   shopping: 34500
+      // }
     }
   },
   methods: {

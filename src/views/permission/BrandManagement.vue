@@ -1,16 +1,19 @@
 <template>
   <div class="contianer">
     <brand-head />
+    <brands-content />
   </div>
 </template>
 
 <script>
 import BrandHead from './components/BrandHead'
+import BrandsContent from './components/BrandsContent'
 
 export default {
   name: 'BrandManagement',
   components: {
-    BrandHead
+    BrandHead,
+    BrandsContent
   }
 }
 </script>
