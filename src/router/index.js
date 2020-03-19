@@ -143,6 +143,16 @@ export const asyncRoutes = [
     },
     children: [
       {
+        path: 'ProductTable',
+        component: () => import('@/views/permission/ProductTable'),
+        name: 'ProductTable',
+        meta: {
+          // title: 'Page Permission',
+          title: '产品类表',
+          roles: ['admin'] // or you can only set roles in sub nav
+        }
+      },
+      {
         path: 'AddProduct',
         component: () => import('@/views/permission/AddProduct'),
         name: 'AddProduct',
