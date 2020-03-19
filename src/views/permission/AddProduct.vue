@@ -9,7 +9,7 @@
         </ul>
       </div>
     </div> -->
-    <shop-category />
+    <!-- <shop-category /> -->
     <div class="add-product-container">
       <div class="subject-container">
         <div class="subject">添加商品</div>
@@ -150,12 +150,12 @@
 </template>
 
 <script>
-import ShopCategory from './components/ShopCategory'
+// import ShopCategory from './components/ShopCategory'
 
 export default {
   name: 'AddProduct',
   components: {
-    ShopCategory
+    // ShopCategory
   },
   data() {
     return {

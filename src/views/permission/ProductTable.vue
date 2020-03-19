@@ -25,7 +25,7 @@
     </div>
     <div class="main-wrapper">
       <!-- 左侧分类列表 -->
-      <shop-category />
+      <!-- <shop-category /> -->
       <!-- 右侧商品表单 -->
       <product-select />
     </div>
@@ -33,12 +33,12 @@
 </template>
 
 <script>
-import ShopCategory from './components/ShopCategory'
+// import ShopCategory from './components/ShopCategory'
 import ProductSelect from './components/ProductSelect'
 export default {
   name: 'ProductTable',
   components: {
-    ShopCategory,
+    // ShopCategory,
     ProductSelect
   },
   data() {
