@@ -6,12 +6,12 @@
 </template>
 
 <script>
-// import ShopCategory from './components/ShopCategory'
+import ShopCategory from './components/ShopCategory'
 import ClassForm from './components/ClassForm'
 export default {
   name: 'CategoryManagement',
   components: {
-    // ShopCategory,
+    ShopCategory,
     ClassForm
   }
 }
